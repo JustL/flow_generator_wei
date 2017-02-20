@@ -121,13 +121,16 @@ double rand_range(double min, double max)
 
 /* generate a random value based on CDF distribution */
 double gen_random_cdf(struct cdf_table *table)
-{
+{   
+
+    if (!table)
+        return 0.0;
+
+
     int i = 0;
     double x = rand_range(table->min_cdf, table->max_cdf);
     /* printf("%f %f %f\n", x, table->min_cdf, table->max_cdf); */
 
-    if (!table)
-        return 0;
 
     for (i = 0; i < table->num_entry; i++)
     {
